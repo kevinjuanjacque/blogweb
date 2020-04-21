@@ -4,7 +4,7 @@
 	$correo=$_POST['INCorreo'];
 	$pass=$_POST['INPass'];
 
-	$query="SELECT idusr,email,pass from usuarios where email='$correo' and pass='$pass'";
+	$query="SELECT idusr,email,pass from usuarios where email='$correo' and pass=sha1('$pass')";
 	$resultado=$conexion->query($query);
 
 	$rows=$resultado->num_rows;

@@ -26,7 +26,7 @@ $row2=$resultadoNombre->fetch_assoc();
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-4 text-gray-800">crea tu pregunta</h1>
+          <h1 class="h3 mb-4 text-gray-800">Comentando</h1>
           <div class="card shadow mb-4">
 
           <!--*************************-->
@@ -46,27 +46,27 @@ $row2=$resultadoNombre->fetch_assoc();
       <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
         <div class="card card-signin my-5">
           <div class="card-body">
-            <h5 class="card-title text-center">Responder</h5>
+            <h5 class="card-title text-center">Comentario</h5>
             <form name="respuestario" class="form-signin" action="addrespuesta.php" method="POST" >
               <div class="form-label-group">
 
 
 
-                <input type="text" class="form-control"  name="idusuario" value="<?php
+                <input type="hidden" class="form-control"  name="idusuario" value="<?php
                     echo $idusr
-                ?>">
+                ?>" readonly>
 
 
 
 
-                <input type="text" class="form-control"  name="idpregunta" value="<?php
+                <input type="hidden" class="form-control"  name="idpregunta" value="<?php
                     echo $idp
-                ?>">
+                ?>" readonly>
 
                 <input type="text"  class="form-control" name="pregunta" value="<?php 
                 echo $row2['descripcion'];
                 ?>" readonly="readonly">
-                 <label for="pregunta">Pregunta a responder</label>
+                 <label for="pregunta">publicacion que comentaras</label>
                 
                
               </div>
@@ -79,7 +79,7 @@ $row2=$resultadoNombre->fetch_assoc();
 
 
 
-                <label for="respuesta"> Respuesta menos de 200 caracteres </label>
+                <label for="respuesta"> Comentario menos de 200 caracteres </label>
                
               </div>
 

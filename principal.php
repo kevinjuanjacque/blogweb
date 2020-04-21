@@ -9,7 +9,7 @@ $pregunta="SELECT nombre FROM usuarios WHERE idusr='$idusr'";
 $resultadoNombre=$conexion->query($pregunta);
 $row=$resultadoNombre->fetch_assoc();
 $_SESSION['press']=FALSE;
-$consulta="SELECT id,titulo,descripcion,usuario_id from preguntas" ;
+$consulta="SELECT id,titulo,descripcion,usuario_id,url from preguntas" ;
 $devuelvepreguntas=$conexion->query($consulta);
 
   include 'template/comun.php';
@@ -31,7 +31,7 @@ $devuelvepreguntas=$conexion->query($consulta);
 
           <!-- Page Heading -->
         
-          <h1 class="h3 mb-4 text-gray-800">Preguntas</h1>
+          <h1 class="h3 mb-4 text-gray-800">Publicaciones</h1>
 
           <?php foreach($devuelvepreguntas as $mostrar){ ?>
 
@@ -52,7 +52,7 @@ $devuelvepreguntas=$conexion->query($consulta);
                   <h6 class="m-0 font-weight-bold text-primary">
                     <?php 
                     echo $mostrar['titulo'];
-                    echo ", pregunta de ";
+                    echo ", publicacion de ";
                     echo $name['nombre'];
                     ?>
                     
@@ -64,6 +64,15 @@ $devuelvepreguntas=$conexion->query($consulta);
                   <div class="card-body">
 
                   <?php echo $mostrar['descripcion'] ?>
+                  <p></p>
+                  <?php 
+                    if (($mostrar['url'])) {
+                      $foto=$mostrar['url'];
+                      echo "<img src='$foto'  width='200' height='200'>";
+         
+                    }
+                  ?>
+
                   <br>
                   <p></p>
                    <form name="respuestas" class="form-signin" action="responder.php" method="POST" >
@@ -74,7 +83,7 @@ $devuelvepreguntas=$conexion->query($consulta);
                         <span class="icon text-white-50">
                           <i class="fas fa-flag"></i>
                         </span>
-                        <span class="text">Responder</span>
+                        <span class="text">Comentar</span>
                       </button>
                  
                   </form>
@@ -87,7 +96,7 @@ $devuelvepreguntas=$conexion->query($consulta);
                         <span class="icon text-white-50">
                           <i class="fas fa-check"></i>
                         </span>
-                        <span class="text">Ver repuestas</span>
+                        <span class="text">Ver Comentario</span>
                     </button>
                  
                   </form>

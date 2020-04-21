@@ -17,7 +17,7 @@ include 'template/comun.php';
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-4 text-gray-800">crea tu pregunta</h1>
+          <h1 class="h3 mb-4 text-gray-800">crea tu publicacion</h1>
           <div class="card shadow mb-4">
 
           <!--*************************-->
@@ -37,8 +37,8 @@ include 'template/comun.php';
       <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
         <div class="card card-signin my-5">
           <div class="card-body">
-            <h5 class="card-title text-center">Pregunta</h5>
-            <form name="formulario" class="form-signin" action="nuevapregunta.php" method="POST" >
+            <h5 class="card-title text-center">Publicacion</h5>
+            <form name="formulario" enctype="multipart/form-data"  class="form-signin" action="nuevapregunta.php" method="POST" >
               <div class="form-label-group">
                 <input type="text" name="usuario"  class="form-control" placeholder="
                 <?php
@@ -51,20 +51,27 @@ include 'template/comun.php';
                 ?>"
                 >
                 <label for="inputEmail">usuario </label>
-                <small class="text-muted">(A este nombre se asociara la pregunta)</small>
+                <small class="text-muted">(A este nombre se asociara la publicacion)</small>
               </div>
 
               <div class="form-label-group">
-                <input class="form-control"  name="titulo" placeholder="titulo de tu pregunta">
+                <input class="form-control"  name="titulo" placeholder="titulo de tu publicacion">
                 <label for="inputPassword">titulo</label>
               </div>
               <div class="form-label-group">
               <textarea name="desc" style="width:250px;height:150px;"></textarea>
-                <label for="desc">descripcion de tu pregunta no mayor a 200 caracteres</label>
+                <label for="desc">descripcion de tu publicacion no mayor a 200 caracteres</label>
                
               </div>
 
-              
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" name="imagen" lang="es" />
+
+                  <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
+                </div>
+
+               
+                <p></p>
               <button class="btn btn-lg btn-primary btn-block " type="submit" name="validacion" >
                 <?php
                   echo  utf8_decode('Confirmar');

@@ -66,10 +66,11 @@
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">FORO </h6>
-            <a class="collapse-item" href="preguntas">Mis Preguntas</a>
-            <a class="collapse-item" href="crearpregunta">Crear Pregunta</a>
-            <a class="collapse-item" href="#">--------</a>
+            <h6 class="collapse-header">BLOG </h6>
+            <a class="collapse-item" href="principal">Ver Publicaciones</a>
+            <a class="collapse-item" href="preguntas">Mis Publicaciones</a>
+            <a class="collapse-item" href="crearPregunta">Crear Publicacion</a>
+           
           </div>
         </div>
       </li>
@@ -100,7 +101,7 @@
         <!-- Topbar -->
         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
-          <SPAN>FORO</SPAN>
+          <SPAN>BLOG</SPAN>
 
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">

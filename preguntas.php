@@ -9,7 +9,7 @@ $pregunta="SELECT nombre FROM usuarios WHERE idusr='$idusr'";
 $resultadoNombre=$conexion->query($pregunta);
 $row=$resultadoNombre->fetch_assoc();
 $_SESSION['press']=FALSE;
-$consulta="SELECT id,titulo,descripcion from preguntas where usuario_id='$idusr'" ;
+$consulta="SELECT id,titulo,descripcion,url from preguntas where usuario_id='$idusr'" ;
 $devuelvepreguntas=$conexion->query($consulta);
 
   include 'template/comun.php';
@@ -31,29 +31,73 @@ $devuelvepreguntas=$conexion->query($consulta);
 
           <!-- Page Heading -->
         
-          <h1 class="h3 mb-4 text-gray-800">Tus Preguntas</h1>
+          <h1 class="h3 mb-4 text-gray-800">Tus Publicaciones</h1>
 
           <?php foreach($devuelvepreguntas as $mostrar){ ?>
           <div class="card shadow mb-4">
 
-      
+                <?php
+                  $idpreguntacant=$mostrar['id'];
+                  $cant="SELECT count(*) as cantidad from respuestas where id_pregunta='$idpreguntacant'";
+                  $resultcant=$conexion->query($cant);
+                  $row=$resultcant->fetch_assoc();
+                  
+                ?>
+
                 <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
                   <h6 class="m-0 font-weight-bold text-primary"><?php echo $mostrar['titulo'] ?></h6>
+
                 </a>
-                <!-- Card Content - Collapse -->
+                
+                      <!-- Card Content - Collapse -->
                 <div class="collapse show" id="collapseCardExample">
                   <div class="card-body">
 
                   <?php echo $mostrar['descripcion'] ?>
+                   <p></p>
+                  <?php 
+                    if (($mostrar['url'])) {
+                      $foto=$mostrar['url'];
+                      echo "<img src='$foto'  width='200' height='200'>";
+         
+                    }
+                  ?>
 
-                  <br>
+                  <p></p>
+                  <!--
                   <a href="#" class="btn btn-danger btn-icon-split">
                     <span class="icon text-white-50">
                       <i class="fas fa-trash"></i>
                     </span>
                     <span class="text">Eliminar</span>
                   </a>
-
+                  -->
+                  <form action="eliminarpregunta" method="POST">
+                    <input type="text" name="idpregunta" hidden="true" value=<?php echo $mostrar['id']?> >
+                    <button class="btn btn-danger btn-icon-split">
+                      <span class="icon text-white-50">
+                        <i class="fas fa-trash"></i>
+                      </span>
+                      <span class="text">Eliminar</span>
+                    </button>
+                  </form>
+                  <p></p>
+                  <form name="respuestas" class="form-signin" action="ver.php" method="POST" >
+                      <input type="hidden" name="id_pregunta" value="<?php 
+                      echo $mostrar['id'] ?>">
+                     
+                      
+                      
+                        <button class="btn btn-danger btn-icon-split">
+                           comentarios
+                          <?php
+                             echo   utf8_decode($row['cantidad']);
+                         ?> 
+                       </button> 
+                      
+                    
+                 
+                  </form>
                    </div>
                 </div>
 

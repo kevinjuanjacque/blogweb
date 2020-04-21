@@ -9,7 +9,7 @@
     $query="INSERT INTO `respuestas`(`id_pregunta`, `id_usuario`, `respuesta`)  VALUES('$idpregunta','$idusuario','$respuesta')";
     if($result=$conexion->query($query))
         {
-           echo "<script> alert('respuesta agregada con exito');
+           echo "<script> alert('comentario agregada con exito');
             window.location='principal';
             </script>";
         }

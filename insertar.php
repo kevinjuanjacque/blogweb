@@ -10,7 +10,7 @@
     $comple .=" ";
     $comple .=$apellido;
     $existe="SELECT email from usuarios where email='$email'";
-	  $query="INSERT INTO usuarios (nombre,email,pass) VALUES('$comple','$email','$pass')";
+	  $query="INSERT INTO usuarios (nombre,email,pass) VALUES('$comple','$email',sha1('$pass'))";
     $resultado=$conexion->query($existe);
     $row=$resultado->fetch_assoc();
     $row=$resultado->num_rows;
