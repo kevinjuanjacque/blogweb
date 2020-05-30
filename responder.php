@@ -9,7 +9,7 @@ $idusr=$_SESSION['id_usuario'];
 $pregunta="SELECT nombre,idusr FROM usuarios WHERE idusr='$idusr'";
 $resultadoNombre=$conexion->query($pregunta);
 $row=$resultadoNombre->fetch_assoc();
-$pregunta="SELECT id,descripcion FROM preguntas WHERE id='$idp'";
+$pregunta="SELECT id,descripcion FROM publicaciones WHERE id='$idp'";
 $resultadoNombre=$conexion->query($pregunta);
 $row2=$resultadoNombre->fetch_assoc();
 

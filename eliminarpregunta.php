@@ -4,8 +4,8 @@
 	$idpregunta=$_POST['idpregunta'];
   
    
-    $existe="SELECT id from preguntas where id=$idpregunta";
-	$query="DELETE FROM preguntas WHERE id = $idpregunta";
+    $existe="SELECT id from publicaciones where id='$idpregunta'";
+	$query="DELETE FROM publicaciones WHERE id = '$idpregunta'";
     $resultado=$conexion->query($existe);
     $row=$resultado->fetch_assoc();
     $row=$resultado->num_rows;

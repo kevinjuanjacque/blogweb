@@ -6,7 +6,7 @@
     $idusuario=$_POST['idusuario'];
     $respuesta=$_POST['respuesta'];
     
-    $query="INSERT INTO `respuestas`(`id_pregunta`, `id_usuario`, `respuesta`)  VALUES('$idpregunta','$idusuario','$respuesta')";
+    $query="INSERT INTO `comentarios`(`id_pregunta`, `id_usuario`, `respuesta`)  VALUES('$idpregunta','$idusuario','$respuesta')";
     if($result=$conexion->query($query))
         {
            echo "<script> alert('comentario agregada con exito');

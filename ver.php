@@ -11,13 +11,13 @@ $resultadoNombre=$conexion->query($pregunta);
 
 
 $row=$resultadoNombre->fetch_assoc();
-$pregunta="SELECT id,titulo,descripcion FROM preguntas WHERE id='$idp'";
+$pregunta="SELECT id,titulo,descripcion FROM publicaciones WHERE id='$idp'";
 $resultadoNombre=$conexion->query($pregunta);
 $row2=$resultadoNombre->fetch_assoc();
 
 
-$pregunta="SELECT id,respuesta,id_usuario FROM respuestas WHERE id_pregunta='$idp'";
-$devuleverespuestas=$conexion->query($pregunta);
+$pregunta="SELECT id,respuesta,id_usuario FROM comentarios WHERE id_pregunta='$idp'";
+$devulevecomentarios=$conexion->query($pregunta);
 $row3=$resultadoNombre->fetch_assoc();
 
 
@@ -53,7 +53,7 @@ $row3=$resultadoNombre->fetch_assoc();
 
 </div>
 
-<?php foreach($devuleverespuestas as $mostrar){ ?>
+<?php foreach($devulevecomentarios as $mostrar){ ?>
 	<?php
 		$respondedor=$mostrar['id_usuario'];
 		$pregunta="SELECT nombre FROM usuarios WHERE idusr='$respondedor'";

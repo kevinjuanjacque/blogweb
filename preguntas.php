@@ -9,8 +9,8 @@ $pregunta="SELECT nombre FROM usuarios WHERE idusr='$idusr'";
 $resultadoNombre=$conexion->query($pregunta);
 $row=$resultadoNombre->fetch_assoc();
 $_SESSION['press']=FALSE;
-$consulta="SELECT id,titulo,descripcion,url from preguntas where usuario_id='$idusr'" ;
-$devuelvepreguntas=$conexion->query($consulta);
+$consulta="SELECT id,titulo,descripcion,url from publicaciones where usuario_id='$idusr'" ;
+$devuelvepublicaciones=$conexion->query($consulta);
 
   include 'template/comun.php';
 
@@ -33,12 +33,12 @@ $devuelvepreguntas=$conexion->query($consulta);
         
           <h1 class="h3 mb-4 text-gray-800">Tus Publicaciones</h1>
 
-          <?php foreach($devuelvepreguntas as $mostrar){ ?>
+          <?php foreach($devuelvepublicaciones as $mostrar){ ?>
           <div class="card shadow mb-4">
 
                 <?php
                   $idpreguntacant=$mostrar['id'];
-                  $cant="SELECT count(*) as cantidad from respuestas where id_pregunta='$idpreguntacant'";
+                  $cant="SELECT count(*) as cantidad from comentarios where id_pregunta='$idpreguntacant'";
                   $resultcant=$conexion->query($cant);
                   $row=$resultcant->fetch_assoc();
                   
@@ -82,7 +82,7 @@ $devuelvepreguntas=$conexion->query($consulta);
                     </button>
                   </form>
                   <p></p>
-                  <form name="respuestas" class="form-signin" action="ver.php" method="POST" >
+                  <form name="comentarios" class="form-signin" action="ver.php" method="POST" >
                       <input type="hidden" name="id_pregunta" value="<?php 
                       echo $mostrar['id'] ?>">
                      
